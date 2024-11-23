@@ -1,5 +1,5 @@
 """
-WSGI config for globetrail project.
+WSGI config for wanderly project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'globetrail.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'wanderly.settings')
 
 application = get_wsgi_application()
