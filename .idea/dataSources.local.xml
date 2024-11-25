@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="PY-243.21565.199">
-    <data-source name="postgres@localhost" uuid="25bb9f9a-bfef-412e-ab38-e8cc09cf1474">
+    <data-source name="postgres@localhost" uuid="501fb2de-13f1-4ec0-b5e6-4c7fdbb9333f">
       <database-info product="PostgreSQL" version="16.3 (Debian 16.3-1.pgdg120+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.7.3" dbms="POSTGRES" exact-version="16.3" exact-driver-version="42.7">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
@@ -14,9 +14,7 @@
             <node kind="database" qname="@">
               <node kind="schema" qname="@" />
             </node>
-            <node kind="database">
-              <name qname="softuniexam" />
-              <name qname="wanderly" />
+            <node kind="database" qname="wanderly">
               <node kind="schema" qname="public" />
             </node>
           </node>

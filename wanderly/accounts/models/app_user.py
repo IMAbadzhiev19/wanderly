@@ -7,6 +7,8 @@ from wanderly.accounts.managers import AppUserManager
 
 
 class AppUser(AbstractBaseUser, PermissionsMixin):
+    objects = AppUserManager()
+
     email = models.EmailField(
         unique=True,
     )
@@ -32,7 +34,5 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     )
 
     EMAIL_FIELD = 'email'
-    USERNAME_FIELD = 'email'  # USERNAME_FIELD means the first credential in our auth
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
-
-    objects = AppUserManager()

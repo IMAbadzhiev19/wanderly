@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3+vggaiwov8zq^voe2+h%w3teankh!9kqon3a_iix%u@%d_0u@'
+SECRET_KEY = 'django-insecure-q_@ius!!d7)vu9bt5^=m%%6hggylkc6f1v2h-&)mf4kmy416a@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'wanderly.accounts.apps.AccountsConfig',
+    'wanderly.common.apps.CommonConfig',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +78,6 @@ WSGI_APPLICATION = 'wanderly.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 
 DATABASES = {
     "default": {
@@ -126,9 +127,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
     BASE_DIR / 'static',
-)
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -137,8 +138,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.AppUser'
 
+
+# Cloudinary
 cloudinary.config(
-    cloud_name='dfgp2jwi3',
+cloud_name='dfgp2jwi3',
     api_key='277995547613766',
     api_secret='QBwHwYLr4NswmSV_ChkGlmbFSQc',
     secure=True,
