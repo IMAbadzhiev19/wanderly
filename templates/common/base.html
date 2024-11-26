@@ -20,20 +20,45 @@
 </head>
 <body>
 
-    <header>
-        {% include 'common/nav.html' %}
-    </header>
+    {% block header %}
+        <header>
+            {% include 'common/nav.html' %}
+        </header>
+    {% endblock %}
 
     <main>
         {% block content %}
         {% endblock %}
     </main>
 
-    <footer>
-        {% include 'common/footer.html' %}
-    </footer>
+    {% block footer %}
+        <footer>
+            {% include 'common/footer.html' %}
+        </footer>
+    {% endblock %}
+
+    <button id="scrollToTopBtn" style="display: none;">↑</button>
 
 </body>
+
+<script>
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    window.addEventListener("scroll", function () {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            scrollToTopBtn.style.display = "block";
+        } else {
+            scrollToTopBtn.style.display = "none";
+        }
+    });
+
+    scrollToTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

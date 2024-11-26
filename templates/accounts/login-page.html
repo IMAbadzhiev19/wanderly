@@ -4,9 +4,9 @@
 {% endblock %}
 
 {% block content %}
-    <div class="register-container">
+    <div class="login-container">
         <h1>Sign Up Page</h1>
-        <form method="post" class="register-form" action="{% url 'register' %}">
+        <form method="post" class="login-form" action="{% url 'login' %}">
             {% csrf_token %}
 
             {% for field in form %}
@@ -19,14 +19,14 @@
             {% endfor %}
 
             <div class="buttons">
-                <button type="submit">Sign Up</button>
+                <button type="submit">Sign In</button>
                 <a href="{% url 'index' %}">Home</a>
             </div>
         </form>
 
         <div class="question">
-            <p>Already have an account?</p>
-            <a href="{% url 'login' %}">Sign In</a>
+            <p>You don't have an account?</p>
+            <a href="{% url 'register' %}">Sign Up</a>
         </div>
     </div>
 {% endblock %}

@@ -1,3 +1,8 @@
 @import './base.css';
-@import './nav.css';
+@import './common/nav.css';
+@import './common/footer.css';
 @import './common/index.css';
+@import './accounts/register-page.css';
+@import './accounts/login-page.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');

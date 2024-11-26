@@ -1,50 +1,80 @@
-.nav-container {
+.landing-container {
+    padding: 7em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+.landing-header {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3em;
+}
+
+.landing-header span {
+    color: #770d0d;
+}
+
+.landing-wrapper {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    padding: 1em 3em 1em 7em;
+    gap: 11em;
 }
 
-.nav-container h2 {
-    color: #1996ba;
-    font-style: italic;
-    text-decoration: underline;
-    font-size: 2.7em;
-}
-
-.nav-container .buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 3em;
-}
-
-.nav-container .buttons a {
-    color: #08b7ec;
-    font-weight: bold;
+.landing-wrapper p {
+    width: 20em;
     font-size: 1.5em;
-    font-style: italic;
-    text-decoration: underline;
+    text-indent: 2em;
+    color: #19809e;
 }
 
-.nav-container .buttons a:hover {
-    color: #1996ba;
-    transition: .3s ease-in-out;
+.landing-wrapper img {
+    width: 23em;
+    height: 18em;
+    border-radius: 15em;
+    box-shadow: 0.3em 0.5em 1em #189dc5;
 }
 
-.nav-container .buttons a:last-child {
-    text-decoration: none;
-    padding: .9em 1.5em;
-    border: .1em solid #189dc5;
-    border-radius: 3em;
+.landing-wrapper p span:first-child {
+    font-weight: 600;
+}
+
+.landing-wrapper p span:nth-child(2) {
+    font-family: "Montserrat", sans-serif;
     font-weight: bold;
-    font-size: 1.1em;
-    background: #1996ba;
-    color: #FFF;
+    text-decoration: underline;
+    color: #0d5351;
+    text-shadow: .02em .02em .3em #179fbd;
 }
 
-.nav-container .buttons a:last-child:hover {
-    background: #19809e;
-    transition: .3s ease-in-out;
+.landing-wrapper p span:last-child {
+    font-family: "Montserrat", sans-serif;
+    color: #770d0d;
+    font-style: italic;
+}
+
+.trips-wrapper {
+    margin-top: 5em;
+}
+
+.trips-wrapper h2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    text-decoration: underline #770d0d;
+}
+
+#scrollToTopBtn {
+    color: #FFF;
+    background-color: #08b7ec;
+    font-size: 2em;
+    padding: .1em .9em;
+    border: 3px solid #19809e;
+    border-radius: 5em;
+    position: fixed;
+    bottom: 29px;
+    right: 20px;
+    z-index: 100;
+    cursor: pointer;
 }
