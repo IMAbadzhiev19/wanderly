@@ -1,0 +1,27 @@
+.not-found {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.not-found-header {
+    font-size: 2.5em;
+    font-family: "Montserrat", sans-serif;
+}
+
+.not-found-href {
+    background-color: #08b7ec;
+    padding: 1em;
+    border-radius: .7em;
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.not-found-href {
+    transition: .3s ease-in-out;
+    background-color: #19809e;
+}

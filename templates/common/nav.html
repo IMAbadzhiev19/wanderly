@@ -1,12 +1,16 @@
 <nav class="nav-container">
-    <h2>Wanderly</h2>
+    <a href="{% url 'index' %}">
+        <h2>Wanderly</h2>
+    </a>
 
     <div class="buttons">
         {% if not request.user.is_authenticated %}
-            <a href="{% url 'register' %}">Get Started</a>
+            <a href="{% url 'login' %}">Get Started</a>
         {% else %}
-            <a href="#">Trips</a>
-            <a href="">Profile</a>
+            <a href="#">Your Trips</a>
+            <a href="{% url 'profile-details' user.pk %}">
+                <img src="{{ user.profile.image }}" alt="Profile Image" class="profile-icon" />
+            </a>
             <form method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
                 <button type="submit">Logout</button>

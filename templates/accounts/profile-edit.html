@@ -1,0 +1,25 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="profile-edit-wrapper">
+        <h1>Edit Profile</h1>
+
+        <form method="post" class="profile-edit-form" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div>
+                {% for field in form %}
+                    <p class="profile-card">
+                        <label>{{ field.label }}</label>
+                        {{ field }}
+
+                        {{ field.errors }}
+                    </p>
+                {% endfor %}
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}

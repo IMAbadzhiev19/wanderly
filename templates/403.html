@@ -1,0 +1,15 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="forbidden">
+        <h1 class="forbidden-header">You do not have access to this page...</h1>
+        <a href="{% url 'index' %}" class="forbidden-href">Back to home page</a>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

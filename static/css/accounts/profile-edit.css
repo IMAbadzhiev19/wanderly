@@ -1,0 +1,43 @@
+.profile-edit-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+.profile-edit-wrapper > h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+}
+
+.profile-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-edit-form label {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+}
+
+.profile-edit-form > button {
+    padding-block: 0.5em;
+    border-radius: 3em;
+    border: none;
+    background-color: #08b7ec;
+    box-shadow: .2em .2em .7em #0d5351;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.profile-edit-form > button:hover {
+    background-color: #0d5351;
+    transition: .3s ease-in-out;
+}

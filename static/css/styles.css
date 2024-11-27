@@ -4,5 +4,9 @@
 @import './common/index.css';
 @import './accounts/register-page.css';
 @import './accounts/login-page.css';
+@import './accounts/profile-details.css';
+@import './accounts/profile-edit.css';
+@import '403.css';
+@import '404.css';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');

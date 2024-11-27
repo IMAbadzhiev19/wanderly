@@ -1,0 +1,45 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="profile-wrapper">
+        <h2>Profile Information</h2>
+
+        <div class="profile-card">
+            <div>
+                <p>
+                    <span>Full Name:</span>
+                    {% if profile.first_name is None %}
+                        N/A
+                    {% else %}
+                        {{ profile.first_name }}
+                    {% endif %}
+
+                    {% if profile.last_name is None %}
+                        N/A
+                    {% else %}
+                        {{ profile.last_name }}
+                    {% endif %}
+                </p>
+                <p>
+                    <span>Date of birth:</span>
+                    {% if profile.date_of_birth is None %}
+                        N/A
+                    {% else %}
+                        {{ profile.date_of_birth }}
+                    {% endif %}
+                </p>
+            </div>
+
+            <img src="{{ profile.image }}" alt="Profile Image"/>
+        </div>
+
+        <div class="profile-buttons-container">
+            <a href="{% url 'profile-edit' user.id %}" class="edit-profile-btn">Edit Profile</a>
+            <form method="post" action="{% url 'profile-delete' user.pk %}">
+                {% csrf_token %}
+                <button class="delete-profile-btn">Delete Profile</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

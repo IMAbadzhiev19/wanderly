@@ -1,0 +1,15 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="not-found">
+        <h1 class="not-found-header">Page not found!</h1>
+        <a href="{% url 'home-page' %}" class="not-found-href">Back to home page</a>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

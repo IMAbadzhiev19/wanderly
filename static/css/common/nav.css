@@ -68,3 +68,9 @@
     box-shadow: .4em .4em #0eb7ea;
     transition: .2s ease-in-out;
 }
+
+.profile-icon {
+    width: 2.3em;
+    height: 2.3em;
+    border-radius: 3em;
+}
