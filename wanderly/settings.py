@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 
 import cloudinary
+from decouple import config
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
 
     'wanderly.accounts.apps.AccountsConfig',
     'wanderly.common.apps.CommonConfig',
+    'wanderly.trips.apps.TripsConfig'
 ]
 
 MIDDLEWARE = [
@@ -83,11 +85,11 @@ WSGI_APPLICATION = 'wanderly.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "wanderly",
-        "USER": "postgres-user",
-        "PASSWORD": "password",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "NAME": config("DB_NAME"),
+        "USER": config("DB_USER"),
+        "PASSWORD": config("DB_PASSWORD"),
+        "HOST": config("DB_HOST"),
+        "PORT": config("DB_PORT"),
     }
 }
 
@@ -148,8 +150,8 @@ LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
 # Cloudinary
 cloudinary.config(
-cloud_name='dfgp2jwi3',
-    api_key='277995547613766',
-    api_secret='QBwHwYLr4NswmSV_ChkGlmbFSQc',
+    cloud_name=config("CLOUDINARY_CLOUD_NAME"),
+    api_key=config("CLOUDINARY_API_KEY"),
+    api_secret=config("CLOUDINARY_API_SECRET"),
     secure=True,
 )
