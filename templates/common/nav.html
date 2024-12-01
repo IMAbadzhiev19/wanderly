@@ -7,7 +7,7 @@
         {% if not request.user.is_authenticated %}
             <a href="{% url 'login' %}">Get Started</a>
         {% else %}
-            <a href="#">Your Trips</a>
+            <a href="{% url 'all-trips' %}">Your Trips</a>
             <a href="{% url 'profile-details' user.pk %}">
                 <img src="{{ user.profile.image }}" alt="Profile Image" class="profile-icon" />
             </a>

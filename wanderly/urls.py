@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('wanderly.common.urls')),
     path('accounts/', include('wanderly.accounts.urls')),
+    path('trips/', include('wanderly.trips.urls')),
 ]

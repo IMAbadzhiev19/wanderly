@@ -6,6 +6,9 @@
 @import './accounts/login-page.css';
 @import './accounts/profile-details.css';
 @import './accounts/profile-edit.css';
+@import './trips/search-trip-form.css';
+@import './trips/trip-list.css';
+
 @import '403.css';
 @import '404.css';
 

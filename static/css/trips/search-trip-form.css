@@ -1,0 +1,29 @@
+.search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.search-bar input {
+    padding: .5em;
+    border: 2px solid #0d5351;
+    border-radius: .3em;
+    color: #08b7ec;
+}
+
+.search-bar > button {
+    padding-inline: 1em;
+    border-radius: 2em;
+    border: 3px solid #19809e;
+    color: #08b7ec;
+    font-weight: bold;
+    font-size: 1.1em;
+    box-shadow: .1em .1em .3em #19809e;
+}
+
+.search-bar > button:hover {
+    transition: .1s ease-in-out;
+    box-shadow: 0 0 .5em #19809e;
+    background-color: #189bbf;
+    color: #FFF;
+}

@@ -1,0 +1,74 @@
+.trips-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    justify-content: center;
+    align-items: center;
+}
+
+.trips {
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+    margin-top: 4em;
+}
+
+.trips a {
+    text-decoration: none;
+}
+
+.trip-card {
+    background-color: #19809e;
+    color: #FFF;
+    padding: 1.5em 3em;
+    border-radius: 2em;
+    box-shadow: .5em .5em 0 #08b7ec;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 23em;
+    height: 13em;
+}
+
+.trip-card:hover {
+    opacity: .8;
+    transition: .3s ease-in-out;
+    box-shadow: .4em .4em 0 #08b7ec;
+}
+
+.trips-down {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    gap: 3em;
+}
+
+.add-trip-btn {
+    background-color: #770d0d;
+    padding: .3em 1em;
+    color: #FFF;
+    border-radius: .3em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.add-trip-btn:hover {
+    opacity: .7;
+    transition: .3s ease-in-out;
+    text-shadow: 0 0 .3em #FFFFFF;
+}
+
+.last-pag {
+    color: #0d5351;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.next-pag {
+    color: #770d0d;
+    font-size: 1.3em;
+    font-weight: bold;
+}
