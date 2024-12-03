@@ -1,0 +1,89 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+    <article class="trip-details-article">
+        <h1>{{ trip.name }}</h1>
+
+        <section class="trip-section">
+            <div class="trip-info">
+                <p><span>Budget</span>: {{ trip.budget }}.</p>
+                <p>
+                    <span>Visibility:</span>
+                    {% if trip.is_published %}
+                        Public
+                    {% else %}
+                        Private
+                    {% endif %}
+                </p>
+                <p>From "{{ trip.start_date }}" to "{{ trip.end_date }}".</p>
+
+                <p><span>Description:</span> {{ trip.description }}</p>
+
+                {% block trip-buttons %}
+                    <div class="buttons">
+                        <a href="#">Edit</a>
+
+                        <form method="post" action="{% url 'trip-delete' trip.pk %}">
+                            {% csrf_token %}
+                            <button type="submit">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                {% endblock %}
+            </div>
+
+            <div class="notes-container">
+                <div class="heading">
+                    <h3>Notes</h3>
+                    <a href="#">New</a>
+                </div>
+                {% for note in notes_page_obj %}
+                    <div class="note-card">
+                        <p>Category: {{ note.category }}</p>
+                        <p>Content: {{ note.content }}</p>
+                        <p>Updated at: {{ note.updated_at }}</p>
+                    </div>
+                {% empty %}
+                {% endfor %}
+
+                <div class="notes-footer">
+                    {% if not notes_page_obj.has_next and notes_page_obj.number == 1 %}
+                        <p>1 of 1 </p>
+                    {% else %}
+                        <div class="pagination">
+                    <span class="step-links">
+                        {% if notes_page_obj.has_previous %}
+                            <a class="last-pag" href="?notes_page=1">first</a>
+                            <a class="next-pag"
+                               href="?notes_page={{ notes_page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ notes_page_obj.number }} of {{ notes_page_obj.paginator.num_pages }}.
+                        </span>
+
+                        {% if notes_page_obj.has_next %}
+                            <a class="next-pag" href="?notes_page={{ notes_page_obj.next_page_number }}">next</a>
+                            <a class="last-pag" href="?notes_page={{ notes_page_obj.paginator.num_pages }}">last</a>
+                        {% endif %}
+                    </span>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <hr/>
+
+        <section class="itineraries-section">
+
+        </section>
+
+        <hr/>
+
+        <section class="expenses-section">
+
+        </section>
+    </article>
+{% endblock %}

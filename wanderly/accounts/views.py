@@ -1,6 +1,11 @@
+import asyncio
+import logging
+
+from django.conf import settings
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView
+from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
@@ -20,7 +25,23 @@ class AppUserRegisterView(CreateView):
         response = super().form_valid(form)
         login(self.request, self.object, backend='wanderly.accounts.authentication.EmailOrUsernameBackend')
 
+        asyncio.run(self.send_registration_email())
+
         return response
+
+    async def send_registration_email(self):
+        try:
+            await asyncio.sleep(0)
+
+            send_mail(
+                subject='Welcome to Wanderly!',
+                message=f'Hi {self.object.username}, welcome to Wanderly!',
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[self.object.email],
+                fail_silently=False,
+            )
+        except Exception as e:
+            print("Email sending failed", e)
 
 
 class AppUserLoginView(LoginView):

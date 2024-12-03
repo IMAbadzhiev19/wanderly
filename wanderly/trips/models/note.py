@@ -10,6 +10,10 @@ class Note(models.Model):
         choices=NoteCategoryChoices,
     )
 
+    content = models.TextField(
+        max_length=71,
+    )
+
     created_at = models.DateTimeField(
         auto_now_add=True,
     )
@@ -26,14 +30,6 @@ class Note(models.Model):
 
     trip = models.ForeignKey(
         to='trips.Trip',
-        on_delete=models.CASCADE,
-        related_name='notes',
-        null=True,
-        blank=True,
-    )
-
-    itinerary = models.ForeignKey(
-        to='trips.Itinerary',
         on_delete=models.CASCADE,
         related_name='notes',
         null=True,

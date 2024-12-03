@@ -5,7 +5,7 @@
         {% include 'trips/search-trip-form.html' %}
         <div class="trips">
             {% for trip in trips %}
-                <a href="#">
+                <a href="{% url 'trip-details' trip.id %}">
                     <div class="trip-card">
                         <h2>{{ trip.name }} </h2>
 

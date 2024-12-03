@@ -5,12 +5,36 @@
     <div class="landing-container">
         <h1 class="landing-header">Manage your trips in a simple way <span>!</span></h1>
         <div class="landing-wrapper">
-            <p><span>Make</span> travelling easier by planning your trips, checking your expenses and many more using <span>Wanderly</span>, a modern and intuitive website, <span>designed to make your travelling experience amazing</span>. 😊</p>
-            <img src="{% static 'images/landing-page-trip.jpg' %}" alt="Landing page trip" />
+            <p><span>Make</span> travelling easier by planning your trips, checking your expenses and many more using
+                <span>Wanderly</span>, a modern and intuitive website, <span>designed to make your travelling experience amazing</span>.
+                😊</p>
+            <img src="{% static 'images/landing-page-trip.jpg' %}" alt="Landing page trip"/>
         </div>
 
         <div class="trips-wrapper">
-            <h2>Browse published trips here:</h2>
+            <h2>A random published trip:</h2>
+
+            <div>
+                {% if random_trip is None %}
+                    <h3>There aren't currently any published trips by other users.</h3>
+                {% else %}
+                    <a style="text-decoration: none" href="{% url 'trip-details' random_trip.id %}">
+                        <div class="trip-card" style="margin-top: 3em;">
+                            <h3>{{ random_trip.name }} </h3>
+
+                            <p>
+                                {% if random_trip.is_published %}
+                                    Published
+                                {% else %}
+                                    Not published
+                                {% endif %}
+                            </p>
+
+                            <p>{{ random_trip.created_at }}</p>
+                        </div>
+                    </a>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}

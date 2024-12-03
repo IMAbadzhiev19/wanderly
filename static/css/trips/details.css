@@ -1,0 +1,97 @@
+.trip-details-article h1 {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+}
+
+.trip-details-article > .trip-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3em;
+    padding-inline: 5em;
+}
+
+.notes-container {
+    width: 30em;
+}
+
+.notes-container > .heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 7em;
+}
+
+.notes-container > .heading a {
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    background-color: #0d5351;
+    color: #FFF;
+    padding: 0.3em 1.5em;
+    border-radius: 3em;
+}
+
+.notes-container > .heading a:hover {
+    opacity: .8;
+    transition: .3s ease-in-out;
+}
+
+.note-card {
+    margin-block: 1.5em;
+    border: 2px solid #08b7ec;
+    padding: 2em;
+    border-radius: 1em;
+}
+
+.notes-container > .notes-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.trip-info {
+    width: 21em;
+}
+
+.trip-info span {
+    font-size: 1.2em;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+}
+
+.trip-info > .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2em;
+}
+
+.trip-info > .buttons a {
+    background-color: #0d5351;
+    padding: .5em 2em;
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: .3em;
+}
+
+.trip-info > .buttons a:hover {
+    opacity: .8;
+    transition: .3s ease-in-out;
+}
+
+.trip-info > .buttons button {
+    background-color: #770d0d;
+    padding: .5em 2em;
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: .3em;
+}
+
+.trip-info > .buttons button:hover {
+    opacity: .8;
+    transition: .3s ease-in-out;
+}
