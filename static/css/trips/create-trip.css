@@ -1,0 +1,43 @@
+.create-trip-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3em;
+}
+
+.create-trip-container h2 {
+    font-family: "Montserrat", sans-serif;
+}
+
+.create-trip-container form {
+    width: 25em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.create-trip-container .field {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-trip-container form p input {
+    width: 100%;
+    padding: .3em;
+}
+
+.create-trip-container form button {
+    padding-block: .7em;
+    border-radius: 1em;
+    border: 3px solid #0d5351;
+    background-color: #FFF;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+}
+
+.create-trip-container form button:hover {
+    opacity: .7;
+    transition: .3s ease-in-out;
+    border: 3px solid #19809e;
+}

@@ -66,6 +66,13 @@
     text-align: center;
 }
 
+.trips-wrapper > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 3em;
+}
+
 #scrollToTopBtn {
     color: #FFF;
     background-color: #08b7ec;

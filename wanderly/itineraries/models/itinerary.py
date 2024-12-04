@@ -1,5 +1,7 @@
 from django.db import models
 
+from wanderly.trips.models import Trip
+
 
 class Itinerary(models.Model):
     date = models.DateField()
@@ -9,7 +11,7 @@ class Itinerary(models.Model):
     )
 
     trip = models.ForeignKey(
-        to='trips.Trip',
+        to=Trip,
         on_delete=models.CASCADE,
         related_name='itineraries',
     )

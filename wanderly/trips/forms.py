@@ -1,7 +1,7 @@
 from django import forms
 from django.forms.models import ModelForm
 
-from wanderly.trips.models import Trip
+from wanderly.trips.models import Trip, Note, Expense
 
 
 class CreateTripForm(ModelForm):
@@ -9,10 +9,14 @@ class CreateTripForm(ModelForm):
         model = Trip
         exclude = ('user', )
 
+        labels = {
+            'is_published': 'Public',
+        }
+
         widgets = {
             'description': forms.Textarea(
                 attrs={
-                    'rows': 1,
+                    'rows': 2,
                     'style': 'resize: none;',
                 }
             ),
@@ -21,6 +25,25 @@ class CreateTripForm(ModelForm):
         }
 
 
+class TripEditForm(ModelForm):
+    class Meta:
+        model = Trip
+        exclude = ('user', )
+
+        labels = {
+            'is_published': 'Public',
+        }
+
+        widgets = {
+            'description': forms.Textarea(
+                attrs={
+                    'rows': 2,
+                    'style': 'resize: none;',
+                }
+            ),
+            'start_date': forms.DateInput(attrs={'type': 'date'}),
+            'end_date': forms.DateInput(attrs={'type': 'date'}),
+        }
 
 
 class SearchForm(forms.Form):
@@ -34,3 +57,15 @@ class SearchForm(forms.Form):
             }
         )
     )
+
+
+class CreateNoteForm(ModelForm):
+    class Meta:
+        model = Note
+        exclude = ('user', 'trip', )
+
+
+class ExpenseCreateForm(ModelForm):
+    class Meta:
+        model = Expense
+        exclude = ('trip', )

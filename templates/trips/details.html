@@ -1,10 +1,16 @@
 {% extends 'common/base.html' %}
 
 {% block content %}
+    <hr/>
     <article class="trip-details-article">
         <h1>{{ trip.name }}</h1>
 
-        <section class="trip-section">
+        <section class="trip-section"
+                 style="
+                         {% if not is_owner %}
+                             justify-content: center;
+                         {% endif %}
+                         ">
             <div class="trip-info">
                 <p><span>Budget</span>: {{ trip.budget }}.</p>
                 <p>
@@ -19,70 +25,107 @@
 
                 <p><span>Description:</span> {{ trip.description }}</p>
 
-                {% block trip-buttons %}
+                {% if is_owner %}
                     <div class="buttons">
-                        <a href="#">Edit</a>
+                        <a href="{% url 'trip-edit' trip.pk %}">Edit Trip</a>
 
                         <form method="post" action="{% url 'trip-delete' trip.pk %}">
                             {% csrf_token %}
                             <button type="submit">
-                                Delete
+                                Delete Trip
                             </button>
                         </form>
                     </div>
-                {% endblock %}
+                {% endif %}
             </div>
 
-            <div class="notes-container">
-                <div class="heading">
-                    <h3>Notes</h3>
-                    <a href="#">New</a>
-                </div>
-                {% for note in notes_page_obj %}
-                    <div class="note-card">
-                        <p>Category: {{ note.category }}</p>
-                        <p>Content: {{ note.content }}</p>
-                        <p>Updated at: {{ note.updated_at }}</p>
+            {% if is_owner %}
+
+                <div class="notes-container">
+                    <div class="heading">
+                        <h3>Notes</h3>
+                        {% if is_owner %}
+                            <a href="{% url 'note-create' trip.pk %}">New</a>
+                        {% endif %}
                     </div>
-                {% empty %}
-                {% endfor %}
-
-                <div class="notes-footer">
-                    {% if not notes_page_obj.has_next and notes_page_obj.number == 1 %}
-                        <p>1 of 1 </p>
-                    {% else %}
-                        <div class="pagination">
-                    <span class="step-links">
-                        {% if notes_page_obj.has_previous %}
-                            <a class="last-pag" href="?notes_page=1">first</a>
-                            <a class="next-pag"
-                               href="?notes_page={{ notes_page_obj.previous_page_number }}">previous</a>
-                        {% endif %}
-
-                        <span class="current">
-                            Page {{ notes_page_obj.number }} of {{ notes_page_obj.paginator.num_pages }}.
-                        </span>
-
-                        {% if notes_page_obj.has_next %}
-                            <a class="next-pag" href="?notes_page={{ notes_page_obj.next_page_number }}">next</a>
-                            <a class="last-pag" href="?notes_page={{ notes_page_obj.paginator.num_pages }}">last</a>
-                        {% endif %}
-                    </span>
+                    {% for note in notes_page_obj %}
+                        <div class="note-card">
+                            <p><span>Category:</span> {{ note.category }}</p>
+                            <p><span>Content:</span> {{ note.content }}</p>
+                            <p><span>Updated at:</span> {{ note.updated_at }}</p>
                         </div>
-                    {% endif %}
+                    {% empty %}
+                    {% endfor %}
+
+                    <div class="notes-footer">
+                        {% if not notes_page_obj.has_next and notes_page_obj.number == 1 %}
+
+                            <p>1 of 1 </p>
+
+                        {% else %}
+
+                            <div class="pagination">
+                                <span class="step-links">
+                                    {% if notes_page_obj.has_previous %}
+                                        <a class="next-pag"
+                                           href="?notes_page={{ notes_page_obj.previous_page_number }}">&laquo;</a>
+                                    {% endif %}
+
+                                    <span class="current">
+                                        Page {{ notes_page_obj.number }} of {{ notes_page_obj.paginator.num_pages }}.
+                                    </span>
+
+                                    {% if notes_page_obj.has_next %}
+                                        <a class="next-pag" href="?notes_page={{ notes_page_obj.next_page_number }}">&raquo;</a>
+                                    {% endif %}
+                                </span>
+                            </div>
+
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
+
+            {% endif %}
         </section>
 
         <hr/>
 
         <section class="itineraries-section">
+            <h2>Itineraries Section</h2>
 
         </section>
 
         <hr/>
 
         <section class="expenses-section">
+            <div class="expenses-heading">
+                <h2>Expenses Section</h2>
+                {% if is_owner %}
+                    <a href="{% url 'expense-create' trip.pk %}">New Expense</a>
+                {% endif %}
+            </div>
+
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Category</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for expense in expenses %}
+                    <tr>
+                        <th>{{ expense.category }}</th>
+                        <th>{{ expense.amount }}</th>
+                        <th>{{ expense.description }}</th>
+                        <th>{{ expense.date }}</th>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
         </section>
     </article>

@@ -36,6 +36,10 @@
     box-shadow: .4em .4em 0 #08b7ec;
 }
 
+.trips > h2 {
+    font-family: "Montserrat", sans-serif;
+}
+
 .trips-down {
     display: flex;
     flex-direction: row;

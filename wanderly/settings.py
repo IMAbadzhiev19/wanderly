@@ -44,7 +44,8 @@ INSTALLED_APPS = [
 
     'wanderly.accounts.apps.AccountsConfig',
     'wanderly.common.apps.CommonConfig',
-    'wanderly.trips.apps.TripsConfig'
+    'wanderly.trips.apps.TripsConfig',
+    'wanderly.itineraries.apps.ItinerariesConfig'
 ]
 
 MIDDLEWARE = [

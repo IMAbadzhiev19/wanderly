@@ -2,7 +2,9 @@
 
 {% block content %}
     <div class="trips-container">
-        {% include 'trips/search-trip-form.html' %}
+        {% if trips|length > 0 %}
+            {% include 'trips/search-trip-form.html' %}
+        {% endif %}
         <div class="trips">
             {% for trip in trips %}
                 <a href="{% url 'trip-details' trip.id %}">
@@ -26,14 +28,15 @@
         </div>
 
         <div class="trips-down">
-            {% if not page_obj.has_next and page_obj.number == 1 %}
-                <p>That's the only page</p>
-            {% else %}
-                <div class="pagination">
+            {% if trips|length > 0 %}
+
+                {% if not page_obj.has_next and page_obj.number == 1 %}
+                    <p>1 of 1</p>
+                {% else %}
+                    <div class="pagination">
                     <span class="step-links">
                         {% if page_obj.has_previous %}
-                            <a class="last-pag" href="?page=1">first</a>
-                            <a class="next-pag" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                            <a class="next-pag" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
                         {% endif %}
 
                         <span class="current">
@@ -41,12 +44,14 @@
                         </span>
 
                         {% if page_obj.has_next %}
-                            <a class="next-pag" href="?page={{ page_obj.next_page_number }}">next</a>
-                            <a class="last-pag" href="?page={{ page_obj.paginator.num_pages }}">last</a>
+                            <a class="next-pag" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
                         {% endif %}
                     </span>
-                </div>
+                    </div>
+                {% endif %}
+
             {% endif %}
+
             <a class="add-trip-btn" href="{% url 'trip-create' %}">Add Trip</a>
         </div>
     </div>

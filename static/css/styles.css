@@ -9,6 +9,7 @@
 @import './trips/search-trip-form.css';
 @import './trips/trip-list.css';
 @import './trips/details.css';
+@import './trips/create-trip.css';
 
 @import '403.css';
 @import '404.css';

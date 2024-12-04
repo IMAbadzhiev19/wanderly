@@ -1,10 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.paginator import Paginator
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, FormView, ListView, DetailView, DeleteView
+from django.views.generic import CreateView, FormView, ListView, DetailView, DeleteView, UpdateView
 
-from wanderly.trips.forms import CreateTripForm, SearchForm
-from wanderly.trips.models import Trip, Itinerary, Note, Expense
+from wanderly.trips.forms import CreateTripForm, SearchForm, TripEditForm, CreateNoteForm, ExpenseCreateForm
+from wanderly.trips.models import Trip, Note, Expense, trip
+from wanderly.itineraries.models import Itinerary
 
 
 class TripCreateView(LoginRequiredMixin, CreateView):
@@ -67,8 +68,25 @@ class TripDetailsView(LoginRequiredMixin, DetailView):
 
         context['itineraries_page_obj'] = itineraries_page_obj
         context['notes_page_obj'] = notes_page_obj
+        context['is_owner'] = self.request.user == trip.user
 
         return context
+
+
+class TripEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Trip
+    template_name = 'trips/edit-trip.html'
+    form_class = TripEditForm
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'trip-details',
+            kwargs={'pk': self.kwargs['pk']}
+        )
+
+    def test_func(self):
+        trip = Trip.objects.get(pk=self.kwargs['pk'])
+        return self.request.user == trip.user
 
 
 class TripDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -79,3 +97,49 @@ class TripDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         trip = Trip.objects.get(pk=self.kwargs['pk'])
         return self.request.user == trip.user
 
+
+class NoteCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    model = Note
+    form_class = CreateNoteForm
+    template_name = 'trips/create-note.html'
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'trip-details',
+            kwargs={'pk': self.kwargs['pk']},
+        )
+
+    def form_valid(self, form):
+        trip = Trip.objects.get(pk=self.kwargs['pk'])
+
+        form.instance.user = self.request.user
+        form.instance.trip = trip
+
+        return super().form_valid(form)
+
+    def test_func(self):
+        trip = Trip.objects.get(pk=self.kwargs['pk'])
+        return self.request.user == trip.user
+
+
+class ExpenseCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    model = Expense
+    form_class = ExpenseCreateForm
+    template_name = 'trips/create-expense.html'
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'trip-details',
+            kwargs={'pk': self.kwargs['pk']},
+        )
+
+    def form_valid(self, form):
+        trip = Trip.objects.get(pk=self.kwargs['pk'])
+
+        form.instance.trip = trip
+
+        return super().form_valid(form)
+
+    def test_func(self):
+        trip = Trip.objects.get(pk=self.kwargs['pk'])
+        return self.request.user == trip.user
