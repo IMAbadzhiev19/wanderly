@@ -1,11 +1,21 @@
 {% extends 'common/base.html' %}
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
+    <div class="edit-trip-wrapper">
+        <h2>Edit Trip</h2>
+        <form method="post" class="edit-trip-form">
+            {% csrf_token %}
 
-        {{ form }}
-    
-        <button type="submit">Submit</button>
-    </form>
+            {% for field in form %}
+                <div class="edit-trip-field">
+                    <label>{{ field.label }}</label>
+
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 {% endblock %}

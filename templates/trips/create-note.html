@@ -1,11 +1,22 @@
 {% extends 'common/base.html' %}
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
+    <div class="note-form-wrapper">
+        <h2>Create Note</h2>
 
-        {{ form }}
+        <form method="post" class="note-form">
+            {% csrf_token %}
 
-        <button type="submit">Submit</button>
-    </form>
+            {% for field in form %}
+                <div class="note-field">
+                    <label>{{ field.label }}</label>
+
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 {% endblock %}

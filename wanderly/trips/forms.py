@@ -64,6 +64,12 @@ class CreateNoteForm(ModelForm):
         model = Note
         exclude = ('user', 'trip', )
 
+        widgets = {
+            'content': forms.Textarea(attrs={
+                'rows': 2,
+            })
+        }
+
 
 class ExpenseCreateForm(ModelForm):
     class Meta:
