@@ -1,0 +1,76 @@
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 3em 1em 7em;
+}
+
+.nav-container h2 {
+    color: #1996ba;
+    font-style: italic;
+    text-decoration: underline;
+    font-size: 2.7em;
+}
+
+.nav-container .buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3em;
+}
+
+.nav-container .buttons a {
+    color: #08b7ec;
+    font-weight: bold;
+    font-size: 1.5em;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.nav-container .buttons a:hover {
+    color: #1996ba;
+    transition: .3s ease-in-out;
+}
+
+.nav-container .buttons a:last-child {
+    text-decoration: none;
+    padding: .9em 1.5em;
+    border: .1em solid #189dc5;
+    border-radius: 1em;
+    font-weight: bold;
+    font-size: 1.1em;
+    background: #1996ba;
+    color: #FFF;
+    box-shadow: .3em .3em #0eb7ea;
+}
+
+.nav-container .buttons button:last-child {
+    text-decoration: none;
+    padding: .9em 1.5em;
+    border: .1em solid #189dc5;
+    border-radius: 1em;
+    font-weight: bold;
+    font-size: 1.1em;
+    background: #1996ba;
+    color: #FFF;
+    box-shadow: .3em .3em #0eb7ea;
+}
+
+.nav-container .buttons a:last-child:hover {
+    background: #19809e;
+    box-shadow: .4em .4em #0eb7ea;
+    transition: .2s ease-in-out;
+}
+
+.nav-container .buttons button:last-child:hover {
+    background: #19809e;
+    box-shadow: .4em .4em #0eb7ea;
+    transition: .2s ease-in-out;
+}
+
+.profile-icon {
+    width: 2.3em;
+    height: 2.3em;
+    border-radius: 3em;
+}

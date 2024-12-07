@@ -1,0 +1,22 @@
+databases:
+  - name: wanderlydb
+    plan: free
+    databaseName: wanderly
+    user: wanderly
+
+services:
+  - type: web
+    plan: free
+    name: wanderly
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn wanderly.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: wanderlydb
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
