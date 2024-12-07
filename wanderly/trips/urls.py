@@ -1,7 +1,7 @@
 from django.urls import path, include
 
 from wanderly.trips.views import TripsView, TripCreateView, TripDetailsView, TripDeleteView, TripEditView, \
-    NoteCreateView, ExpenseCreateView
+    NoteCreateView, ExpenseCreateView, ItineraryCreateView, ItineraryDeleteView
 
 urlpatterns = [
     path('', TripsView.as_view(), name='all-trips'),
@@ -12,5 +12,7 @@ urlpatterns = [
         path('edit/', TripEditView.as_view(), name='trip-edit'),
         path('add-note/', NoteCreateView.as_view(), name='note-create'),
         path('add-expense/', ExpenseCreateView.as_view(), name='expense-create'),
+        path('create-itinerary/', ItineraryCreateView.as_view(), name='itinerary-create'),
+        path('delete-itinerary/', ItineraryDeleteView.as_view(), name='itinerary-delete'),
     ])),
 ]

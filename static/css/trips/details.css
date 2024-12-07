@@ -146,3 +146,45 @@
     transition: .3s ease-in-out;
 }
 
+.itineraries-section {
+    padding: 1em 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+.itineraries-heading {
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+    justify-content: center;
+    align-items: center;
+}
+
+.itineraries-heading a {
+    background-color: #19809e;
+    border-radius: 1em;
+    padding: 1em 2em;
+    text-decoration: none;
+    font-weight: bold;
+    color: #FFF;
+    font-size: 1em;
+}
+
+.itineraries-heading a:hover {
+    opacity: .8;
+    transition: .3s ease-in-out;
+}
+
+.view-href-itinerary {
+    font-family: "Montserrat", sans-serif;
+}
+
+.view-href-itinerary-delete {
+    font-family: "Montserrat", sans-serif;
+    color: #770d0d;
+    border: none;
+    background-color: #FFF;
+    font-weight: bold;
+    text-decoration: underline;
+}

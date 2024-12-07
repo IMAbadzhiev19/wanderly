@@ -3,9 +3,9 @@ from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, FormView, ListView, DetailView, DeleteView, UpdateView
 
-from wanderly.trips.forms import CreateTripForm, SearchForm, TripEditForm, CreateNoteForm, ExpenseCreateForm
-from wanderly.trips.models import Trip, Note, Expense, trip
-from wanderly.itineraries.models import Itinerary
+from wanderly.trips.forms import CreateTripForm, SearchForm, TripEditForm, CreateNoteForm, ExpenseCreateForm, \
+    ItineraryCreateForm
+from wanderly.trips.models import Trip, Note, Expense, Itinerary
 
 
 class TripCreateView(LoginRequiredMixin, CreateView):
@@ -139,6 +139,43 @@ class ExpenseCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         form.instance.trip = trip
 
         return super().form_valid(form)
+
+    def test_func(self):
+        trip = Trip.objects.get(pk=self.kwargs['pk'])
+        return self.request.user == trip.user
+
+
+class ItineraryCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    model = Itinerary
+    form_class = ItineraryCreateForm
+    template_name = 'trips/create-itinerary.html'
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'trip-details',
+            kwargs={'pk': self.kwargs['pk']},
+        )
+
+    def form_valid(self, form):
+        trip = Trip.objects.get(pk=self.kwargs['pk'])
+
+        form.instance.trip = trip
+
+        return super().form_valid(form)
+
+    def test_func(self):
+        trip = Trip.objects.get(pk=self.kwargs['pk'])
+        return self.request.user == trip.user
+
+
+class ItineraryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Itinerary
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'trip-details',
+            kwargs={'pk': self.kwargs['pk']},
+        )
 
     def test_func(self):
         trip = Trip.objects.get(pk=self.kwargs['pk'])

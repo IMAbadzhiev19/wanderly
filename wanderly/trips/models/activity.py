@@ -27,7 +27,7 @@ class Activity(models.Model):
     )
 
     itinerary = models.ForeignKey(
-        to='itineraries.Itinerary',
+        to='trips.Itinerary',
         on_delete=models.CASCADE,
         related_name='activities',
     )

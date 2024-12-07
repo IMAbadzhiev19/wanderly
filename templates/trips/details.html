@@ -91,7 +91,40 @@
         <hr/>
 
         <section class="itineraries-section">
-            <h2>Itineraries Section</h2>
+            <div class="itineraries-heading">
+                <h2>Itineraries Section</h2>
+                {% if is_owner %}
+                    <a href="{% url 'itinerary-create' trip.pk %}">New Itinerary</a>
+                {% endif %}
+            </div>
+
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Created At</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for itinerary in itineraries %}
+                    <tr>
+                        <th>{{ itinerary.pk }}</th>
+                        <th>{{ itinerary.date }}</th>
+                        <th>{{ itinerary.created_at }}</th>
+                        <th><a href="#" class="view-href-itinerary">View</a></th>
+                        <th>
+                            <form method="post" action="{% url 'itinerary-delete' trip.pk %}">
+                                {% csrf_token %}
+
+                                <button class="view-href-itinerary-delete">Delete</button>
+                            </form>
+                        </th>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
         </section>
 

@@ -1,7 +1,7 @@
 from django import forms
 from django.forms.models import ModelForm
 
-from wanderly.trips.models import Trip, Note, Expense
+from wanderly.trips.models import Trip, Note, Expense, Itinerary
 
 
 class CreateTripForm(ModelForm):
@@ -75,3 +75,17 @@ class ExpenseCreateForm(ModelForm):
     class Meta:
         model = Expense
         exclude = ('trip', )
+
+        widgets = {
+            'date': forms.DateInput(attrs={'type': 'date'}),
+        }
+
+
+class ItineraryCreateForm(ModelForm):
+    class Meta:
+        model = Itinerary
+        exclude = ('trip', )
+
+        widgets = {
+            'date': forms.DateInput(attrs={'type': 'date'}),
+        }
