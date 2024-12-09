@@ -113,9 +113,9 @@
                         <th>{{ itinerary.pk }}</th>
                         <th>{{ itinerary.date }}</th>
                         <th>{{ itinerary.created_at }}</th>
-                        <th><a href="#" class="view-href-itinerary">View</a></th>
+                        <th><a href="{% url 'itinerary-details' trip.pk itinerary.pk %}" class="view-href-itinerary">View</a></th>
                         <th>
-                            <form method="post" action="{% url 'itinerary-delete' trip.pk %}">
+                            <form method="post" action="{% url 'itinerary-delete' trip.pk itinerary.pk %}">
                                 {% csrf_token %}
 
                                 <button class="view-href-itinerary-delete">Delete</button>

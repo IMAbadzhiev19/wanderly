@@ -1,0 +1,46 @@
+.activities-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5em;
+}
+
+.activities-container > div:first-child {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+}
+
+.activities-container > div:first-child a {
+    background-color: #0d5351;
+    padding: .5em 1.5em;
+    border-radius: 1em;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.activities-container > div:first-child a:hover {
+    opacity: .8;
+    transition: .3s ease-in-out;
+}
+
+.activity-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-radius: 1em;
+    width: 43em;
+    padding: 1em;
+    box-shadow: .3em .3em .5em #000;
+}
+
+.activity-card:hover {
+    box-shadow: .3em .3em .7em #000;
+    transition: .3s ease-in-out;
+    cursor: alias;
+}

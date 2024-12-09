@@ -1,8 +1,9 @@
 {% extends 'common/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
     <div class="note-form-wrapper">
-        <h2>Create Itinerary</h2>
+        <h2>Create Activity</h2>
 
         <form method="post" class="note-form">
             {% csrf_token %}

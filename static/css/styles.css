@@ -12,6 +12,7 @@
 @import './trips/create-trip.css';
 @import './trips/edit-trip.css';
 @import './trips/create-note.css';
+@import './trips/itinerary-details.css';
 
 @import '403.css';
 @import '404.css';

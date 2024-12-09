@@ -1,0 +1,30 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+    <div class="activities-container">
+        <div>
+            <h2>Activities </h2>
+            <a href="{% url 'create-activity' itinerary.trip.pk itinerary.pk %}">Create Activity</a>
+        </div>
+
+        <div>
+            {% for activity in itinerary.activities.all %}
+                <div class="activity-card">
+                    <div>
+                        <h3>{{ activity.name }} </h3>
+
+                        <p>Description: {{ activity.description }}</p>
+
+                        <p>From {{ activity.start_time }} to {{ activity.end_time }}</p>
+
+                        <p>Location: {{ activity.location }}</p>
+
+                        <p>Category: {{ activity.category }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <h2>No activities at the moment!</h2>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
