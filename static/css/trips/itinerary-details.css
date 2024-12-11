@@ -37,6 +37,7 @@
     width: 43em;
     padding: 1em;
     box-shadow: .3em .3em .5em #000;
+    margin-bottom: 2em;
 }
 
 .activity-card:hover {
